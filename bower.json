@@ -1,0 +1,23 @@
+{
+  "name": "gun-ui-menu",
+  "author": "Stefdv",
+  "disclaimer" : "original menu forked from https://github.com/oyeharry/app-menu",
+  "description": "member of the gun-ui library",
+  "main": "gun-ui-menu.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "iron-menu-behavior": "^2.0.1",
+    "iron-collapse": "^2.0.0",
+    "iron-behaviors": "PolymerElements/iron-behaviors#^2.0.0",
+    "iron-icon": "PolymerElements/iron-icon#^2.0.1",
+    "iron-a11y-keys-behavior": "PolymerElements/iron-a11y-keys-behavior#^2.0.1"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  }
+}

@@ -1,0 +1,51 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+
+<dom-module id="gun-ui-menu-icon-item">
+  <template>
+    <style>
+    :host {
+      display: block;
+      color: currentColor;
+      @apply(--gun-ui-menu-icon-item-style);
+    }
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--app-menu-color, var(--primary-text-color));
+      transition: color 0.4s ease-out;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
+      min-height: 48px;
+    }
+    
+    iron-icon {
+      margin-right: 15px;
+    }
+    </style>
+
+    <a href="javascript:void(0)">
+      <iron-icon hidden="{{!icon}}" icon="[[icon]]"></iron-icon>
+      <slot></slot>
+    </a>
+  </template>
+
+  <script>
+  Polymer({
+    is: 'gun-ui-menu-icon-item',
+    properties: {
+      icon: {
+        type: String,
+        reflectToAttribute: true
+      }
+    }
+  });
+  </script>
+</dom-module>

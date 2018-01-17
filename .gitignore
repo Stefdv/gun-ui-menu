@@ -3,6 +3,12 @@ logs
 *.log
 npm-debug.log*
 
+# polymer
+bower_components*
+bower-*.json
+.DS_Store
+debug.log
+
 # Runtime data
 pids
 *.pid

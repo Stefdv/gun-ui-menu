@@ -1,0 +1,96 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-menu-behavior/iron-menu-behavior.html">
+<link rel="import" href="../paper-styles/default-theme.html">
+
+<link rel="import" href="gun-ui-menu-shared-styles.html">
+<!--
+Material design: [Menus](https://www.google.com/design/spec/components/menus.html)
+
+`<gun-ui-menu>` implements an accessible menu control with Material Design styling. The focused item
+is highlighted, and the selected item has colored text.
+
+    <gun-ui-menu>
+      <a href="#" class="gun-ui-menu-item">Item 1</a>
+      <a href="#" class="gun-ui-menu-item">Item 2</a>
+    </gun-ui-menu>
+
+An initial selection can be specified with the `selected` attribute.
+
+    <gun-ui-menu selected="0">
+      <a href="#" class="gun-ui-menu-item">Item 1</a>
+      <a href="#" class="gun-ui-menu-item">Item 2</a>
+    </gun-ui-menu>
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--gun-ui-menu-selected-bg-color`  | Menu background color | `--primary-background-color`
+`--gun-ui-menu-background-color`   | Menu background color  | `--primary-background-color`
+`--gun-ui-menu-color`              | Menu foreground color  | `--primary-text-color`
+`--gun-ui-menu-disabled-color`     | Foreground color for a disabled item  | `--disabled-text-color`
+`--gun-ui-menu`                    | Mixin applied to the menu    | `{}`
+`--gun-ui-menu-selected-item`      | Mixin applied to the selected item        | `{}`
+`--gun-ui-menu-focused-item`       | Mixin applied to the focused item         | `{}`
+`--gun-ui-menu-focused-item-after` | Mixin applied to the ::after pseudo-element for the focused item | `{}`
+
+### Accessibility
+
+`<gun-ui-menu>` has `role="menu"` by default. It implements key bindings to navigate through the menu with the up and down arrow keys, esc to exit the menu, and enter to activate a menu item. Typing the first letter of a menu item will also focus it.
+
+@group App Elements
+@element gun-ui-menu
+@demo demo/index.html
+-->
+
+<dom-module id="gun-ui-menu">
+  <template>
+    <style include="gun-ui-menu-shared-styles"></style>
+    <style>
+    :host {
+      display: block;
+      padding: 8px 0;
+      background: var(--gun-ui-menu-background-color, var(--primary-background-color));
+      color: var(--gun-ui-menu-color, var(--primary-text-color));
+      @apply(--gun-ui-menu);
+    }
+    </style>
+
+    <div class="selectable-content">
+      <slot></slot>
+    </div>
+  </template>
+
+  <script>
+  Polymer({
+    is: 'gun-ui-menu',
+
+    properties: {
+      selected: {
+        type: String,
+        notify:true,
+        observer:'_selectedChanged'  
+      },
+      original:{
+        type:String
+      }
+    },
+
+    behaviors: [
+      Polymer.IronMenuBehavior
+    ],
+
+    hostAttributes: {
+      role: 'menu'
+    },
+    _selectedChanged(selected){
+      if(!selected){ this.selected = this.original}
+      this.original = selected ? selected : this.original;
+      //selected ? console.log('changed to ',this.selected) : console.log('keeping ',this.original)
+            }
+
+  });
+  </script>
+</dom-module>
