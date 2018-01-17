@@ -44,7 +44,23 @@
       icon: {
         type: String,
         reflectToAttribute: true
+      },
+      route:{
+        type:String
       }
+    },
+   ready() {
+      this.addEventListener('click', this._tapHandler);
+   },
+    _tapHandler() {
+      console.log('tapped ',this.route)
+      this.dispatchEvent(
+        new CustomEvent('selected', { 
+          detail:this.route,
+          bubbles: true, 
+          composed: true
+        })
+      );
     }
   });
   </script>
